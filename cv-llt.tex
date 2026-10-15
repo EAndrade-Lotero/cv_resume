@@ -1,86 +1,174 @@
-\documentclass[a4paper,skipsamekey,11pt,english]{curve}
-% Default biblatex style used for the publication list is APA6. If you wish to use a different style or pass other options to biblatex you can change them here. 
-\PassOptionsToPackage{style=ieee,sorting=ydnt,uniquename=init,defernumbers=true}{biblatex}
+\documentclass[10pt]{article}
 
-\usepackage{settings}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx}
+\usepackage[scaled=0.92]{helvet}
+\usepackage[margin=0.65in]{geometry}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
 
-% If you need to further customise your biblatex setup e.g. with \DeclareFieldFormat etc please add them here AFTER loading settings.sty. For example, to remove the default "[Online] Available:" prefix before URLs when using the IEEE style:
-\DefineBibliographyStrings{english}{url={\textsc{url}}}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{2em}
+\setlist[itemize]{leftmargin=1.15em,label=\textbullet,itemsep=0.12em,topsep=0.15em,parsep=0pt,partopsep=0pt}
 
-%% Only needed if you want a Publication List
-\addbibresource{own-bib.bib}
-
-%% Specify your last name(s) and first name(s) (as given in the .bib) to automatically bold your own name in the publications list. 
-%% One caveat: You need to write \bibnamedelima where there's a space in your name for this to work properly; or write \bibnamedelimi if you use initials in the .bib
-\mynames{Edgar\bibnamedelimi J.\bibnamedelima Andrade-Lotero}
-
-%% MAKE SURE THERE IS NO SPACE AFTER THE FINAL NAME IN YOUR \mynames LIST
-
-
-% Change the fonts if you want
-\ifxetexorluatex % If you're using XeLaTeX or LuaLaTeX
-  \usepackage{fontspec} 
-  %% You can use \setmainfont etc; I'm just using these font packages here because they provide OpenType fonts for use by XeLaTeX/LuaLaTeX anyway
-  \usepackage[p,osf,swashQ]{cochineal}
-  \usepackage[medium,bold]{cabin}
-  \usepackage[varqu,varl,scale=0.9]{zi4}
-\else % If you're using pdfLaTeX or latex
-  \usepackage[T1]{fontenc}
-  \usepackage[p,osf,swashQ]{cochineal}
-  \usepackage{cabin}
-  \usepackage[varqu,varl,scale=0.9]{zi4}
-\fi
-
-% Change the page margins if you want
-% \geometry{left=1cm,right=1cm,top=1.5cm,bottom=1.5cm}
-
-% Change the colours if you want
-% \definecolor{SwishLineColour}{HTML}{00FFFF}
-% \definecolor{MarkerColour}{HTML}{0000CC}
-
-% Change the item prefix marker if you want
-% \prefixmarker{$\diamond$}
-
-%% Photo is only shown if "fullonly" is included
-\includecomment{fullonly}
-% \excludecomment{fullonly}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\leftheader{%
-  {\LARGE\bfseries\sffamily Edgar J. Andrade-Lotero, Ph.D.}
-
-  \makefield{\faEnvelope[regular]}{\href{mailto:edgar.andrade@urosario.edu.co}{\texttt{andradeed78@gmail.com}}}
-  \makefield{\faLinkedin}
-  {\href{http://www.linkedin.com/in/example/}{\texttt{Edgar José Andrade-Lotero}}}
-%  \makefield{\faGlobe}{\url{http://example.example.org/}}
-
-  % You can use a tabular here if you want to line up the fields.
+\newcommand{\cvsection}[1]{%
+  \par\vspace{0.55em}%
+  \noindent{\sffamily\bfseries\MakeUppercase{#1}}\par
+  \vspace{-0.35em}%
+  \noindent\rule{\textwidth}{0.4pt}\par
+  \vspace{0.2em}%
 }
 
-\rightheader{~}
-\begin{fullonly}
-\photo[r]{EJAL}
-\photoscale{0.13}
-\end{fullonly}
+\newcommand{\cvjob}[4]{%
+  \par\noindent
+  \begin{minipage}[t]{0.58\textwidth}
+    \raggedright\textbf{#1}\\[0.05em]
+    \textit{#3}%
+  \end{minipage}%
+  \begin{minipage}[t]{0.42\textwidth}
+    \raggedleft #2\\[0.05em]
+    \textit{#4}%
+  \end{minipage}%
+  \par\vspace{0.22em}%
+}
 
-\title{Curriculum Vitae}
+\newcommand{\cvedu}[3]{%
+  \par\noindent\textbf{#1}\par
+  \vspace{0.05em}%
+  \noindent
+  \begin{minipage}[t]{0.9\textwidth}
+    \raggedright\textit{#2}%
+  \end{minipage}%
+  \begin{minipage}[t]{0.1\textwidth}
+    \raggedleft #3%
+  \end{minipage}%
+  \par\vspace{0.28em}%
+}
 
 \begin{document}
-\makeheaders[c]
 
-\makerubric{employment}
-\makerubric{education}
+\begin{center}
+  {\LARGE\bfseries Edgar J. Andrade-Lotero, Ph.D.\par}
+  \vspace{0.2em}
+  {\small\href{mailto:edgar.andrade@urosario.edu.co}{edgar.andrade@urosario.edu.co} \textbar\ \href{https://www.linkedin.com/in/edgar-andrade-lotero}{LinkedIn} \textbar\ \href{https://github.com/EAndrade-Lotero}{GitHub}\par}
+\end{center}
 
-\input{publications}
+\cvsection{Professional Summary}
+Researcher and academic experience spanning logic, cognitive science, and artificial intelligence. Ph.D. in Logic from the University of Amsterdam, with expertise in behavioral experiments and computational modeling of group decision-making and collective intelligence. Research collaborations with leading laboratories at Indiana University, UC Davis, and Cornell University. Experienced in supervising undergraduate and graduate students and teaching mathematics, artificial intelligence, and philosophy of language.
 
-\makerubric{misc}
+\cvsection{Experience}
+\cvjob{Postgraduate Researcher}{2025 -- Present}{University of California, Davis, USA}{Department of Communication}
+\cvjob{Expert Consultant}{2024 -- 2025}{Turing.com}{}
+\cvjob{Associate Professor}{2019 -- Present}{Universidad del Rosario, Bogot\'a, Colombia}{School of Sciences and Engineering}
+\cvjob{Associate Professor}{2010 -- 2019}{Universidad del Rosario, Bogot\'a, Colombia}{Faculty of Natural Sciences and Mathematics}
+\cvjob{Auxiliary Professor}{July 2006 -- 2010}{Universidad del Rosario, Bogot\'a, Colombia}{School of Social Sciences}
+\cvjob{Lecturer}{February 2006 -- June 2006}{Universidad Sergio Arboleda, Bogot\'a, Colombia}{School of Mathematics}
+\cvjob{Lecturer}{February 2004 -- June 2004}{Universidad Sergio Arboleda, Bogot\'a, Colombia}{School of Mathematics}
+\cvjob{Lecturer}{2003 -- 2004}{Universidad Nacional de Colombia, Bogot\'a, Colombia}{Department of Mathematics}
 
-\makerubric{skills}
+\cvsection{Education}
+\cvedu{University of Amsterdam}{Ph.D.\ in Logic. Thesis: Models of Language: Towards a practice-based account of information in natural language.}{2012}
+\cvedu{University of Amsterdam}{M.Sc.\ in Logic. Thesis: Meaning and Form in Event Calculus.}{2006}
+\cvedu{Universidad Nacional de Colombia}{B.A.\ in Mathematics.}{2002}
 
-%\makerubric{referee}
-% \input{referee-full}
+\cvsection{Publications: Research Articles}
+\begin{itemize}
+  \item D.~Yela, G.~Obando, A.~Pantoja, \textbf{E.~J. Andrade-Lotero}, and J.~Barreiro-Gomez, ``Finding the delay that maximizes the convergence rate of a class of LTI systems,'' {Journal of the Franklin Institute}, vol.~363, no.~15, p.~109012, 2026.
+  \item \textbf{E.~J. Andrade-Lotero}, C.~\'Alvarez, and G.~Obando, ``A paradox in Brian Arthur's solution to his El Farol Bar problem,'' {Advances in Complex Systems}, vol.~27, no.~8, p.~2550014, 2025.
+  \item J.~Piza-Londo\~no and \textbf{E.~J. Andrade-Lotero}, ``Leveraging semantic parsing using text embeddings and reinforcement learning,'' {2024 IEEE Latin American Conference on Computational Intelligence (LA-CCI)}, pp.~1--6, 2024.
+  \item R.~L. Goldstone, \textbf{E.~J. Andrade-Lotero}, R.~Hawkins, and M.~Roberts, ``The emergence of specialized roles within groups,'' {Topics in Cognitive Science}, vol.~16, pp.~257--281, 2023.
+  \item \textbf{E.~J. Andrade-Lotero}, J.~A. Velasco, J.~Ortiz-Duque, and R.~L. Goldstone, ``The division of linguistic labor for offloading conceptual understanding,'' {Philosophical Transactions of the Royal Society B}, vol.~378, no.~20210360, 2022.
+  \item \textbf{E.~J. Andrade-Lotero} and R.~L. Goldstone, ``Self-organized division of cognitive labor,'' {PLOS ONE}, vol.~16, no.~7, 2021.
+  \item \textbf{E.~J. Andrade-Lotero} and J.~Ortiz-Duque, ``A mis-conception of logic in its diffusion across non-mathematical environments,'' {Linguistic and Philosophical Investigations}, vol.~18, pp.~77--96, 2019.
+  \item C.~\'Alvarez, \textbf{E.~J. Andrade-Lotero}, and V.~Gauthier, ``Modelos epidemiol\'ogicos en redes: Una presentaci\'on introductoria,'' {Bolet\'in de Matem\'aticas}, vol.~22, no.~1, pp.~21--37, 2015.
+  \item \textbf{E.~J. Andrade-Lotero}, ``Una gram\'atica l\'ogica para explicar algunos aspectos de la sem\'antica del espa\~nol,'' {Bolet\'in de Matem\'aticas}, vol.~20, no.~1, pp.~21--50, 2013.
+  \item \textbf{E.~J. Andrade-Lotero} and C.~Dutilh, ``A contentious trinity: Levels of entailment in Brandom's pragmatic inferentialism,'' {Philosophia}, vol.~40, no.~1, pp.~41--53, 2012.
+  \item \textbf{E.~J. Andrade-Lotero} and C.~Dutilh, ``Validity, the squeezing argument and alternative semantic systems: The case of Aristotelian syllogistic,'' {Journal of Philosophical Logic}, vol.~41, no.~2, pp.~387--418, 2012.
+  \item \textbf{E.~J. Andrade-Lotero} and E.~Becerra, ``Establishing connections between Aristotle's natural deduction and first-order logic,'' {History and Philosophy of Logic}, vol.~29, no.~4, pp.~309--325, 2008.
+  \item \textbf{E.~J. Andrade-Lotero} and E.~Becerra, ``Corcoran's Aristotelian syllogistic as a subsystem of first-order logic,'' {Revista Colombiana de Matem\'aticas}, vol.~41, no.~1, pp.~67--80, 2007.
+\end{itemize}
+
+\cvsection{Publications: Books and Translations}
+\begin{itemize}
+  \item L.~Gamut, {L\'ogica, lenguaje y significado: l\'ogica intensional y gram\'atica l\'ogica}, \textbf{E.~Andrade-Lotero} and C.~M. (translators), Eds. Bogot\'a: Editorial Universidad del Rosario, 2010.
+  \item \textbf{E.~J. Andrade-Lotero}, P.~Cubides, C.~M\'arquez, E.~J. Vargas, and D.~Cancino, {L\'ogica y Pensamiento Formal}. Editorial Universidad del Rosario, 2008.
+\end{itemize}
+
+\cvsection{Publications: Conference Proceedings (Edited)}
+\begin{itemize}
+  \item M.~S. Dora Achouroti, \textbf{Edgar J.~Andrade-Lotero}, Eds., {Proceedings of the Amsterdam Graduate Philosophy Conference: Meaning and Truth}, X-2010-01, University of Amsterdam, ILLC Publications, 2010.
+  \item M.~S. Dora Achouroti, \textbf{Edgar J.~Andrade-Lotero}, Eds., {Proceedings of the Graduate Philosophy Conference on Normativity}, X-2009-02, University of Amsterdam, ILLC Publications, 2009.
+\end{itemize}
+
+\cvsection{Publications: Conference Papers}
+\begin{itemize}
+  \item \textbf{E.~J. Andrade-Lotero} and R.~L. Goldstone, ``An empirical study of the El Farol Bar problem,'' {Collective Intelligence}, 2024.
+  \item \textbf{E.~J. Andrade-Lotero} and R.~L. Goldstone, ``Self-organized division of cognitive labor,'' {Proceedings of the 41st Annual Conference of the Cognitive Science Society}, 2019, pp.~91--97.
+  \item \textbf{E.~J. Andrade-Lotero} and R.~L. Goldstone, ``Self-organized division of cognitive labor,'' {Collective Intelligence}, 2019.
+  \item \textbf{E.~J. Andrade-Lotero} and J.~Ortiz, ``The proper approach to the division of linguistic labor,'' {Sixth International Conference on Philosophy of Language and Linguistics}, 2019.
+  \item \textbf{E.~J. Andrade-Lotero}, ``Translations and structures: Some reflexions about teaching the semantics of first-order logic,'' {Philogica IV}, 2016.
+  \item \textbf{E.~J. Andrade-Lotero}, ``Explicating compositionality,'' {Philogica III}, 2014.
+  \item \textbf{E.~J. Andrade-Lotero}, ``On truth conditions that depend on performatives,'' {Third International Conference on Philosophy of Language and Linguistics}, 2013.
+  \item \textbf{E.~J. Andrade-Lotero}, ``El principio de composicionalidad y la competencia ling\"u\'istica,'' {IV Congreso Colombiano de Filosof\'ia}, 2012.
+  \item \textbf{E.~J. Andrade-Lotero}, ``Compositionality from a `use-theoretic' perspective,'' {32nd International Wittgenstein Symposium}, 2009.
+  \item \textbf{E.~J. Andrade-Lotero} and C.~Dutilh, ``A reconstruction of the hierarchical relations between incompatibility entailment, committive and permissive consequence,'' {Proceedings of the Workshop on Bob Brandom's Recent Philosophy of Language: Towards an Analytic Pragmatism}, 2009, pp.~90--98.
+\end{itemize}
+
+\cvsection{Students Supervised}
+\begin{itemize}
+  \item J.~V. Tamayo-Ram\'irez, Marco general para dise\~nar y evaluar sistemas de tutor\'ia inteligentes: una propuesta para aprovechar grandes modelos de lenguaje de manera rigurosa, Masters in Engineering, Science and Technology, 2026.
+  \item J.~P. Rivera Burgos, Visibilizar lo invisibilizado: herramienta de procesamiento de lenguaje natural para sistematizar noticias de homicidios de poblaci\'on LGBTIQ+, Masters in Applied Mathematics and Computer Science, 2025.
+  \item C.~A. G\'omez Vargas, Integraci\'on del aprendizaje por refuerzo en parsers sem\'anticos para la deducci\'on l\'ogica en lenguaje natural, Masters in Applied Mathematics and Computer Science, 2025.
+  \item S.~Carrer\'a Mart\'inez, Pol\'itica de puntos y l\'ineas: aplicaci\'on de teor\'ia de grafos al comportamiento de los partidos pol\'iticos colombianos en el Congreso de la Rep\'ublica, Masters in Applied Mathematics and Computer Science, 2025.
+  \item E.~J. L\'opez-L\'opez and S.~Gait\'an-Rubio, Modelaci\'on de precios por medio del juego de las minor\'ias, Masters in Applied Mathematics and Computer Science, 2024.
+  \item E.~Mu\~noz, Gesti\'on activa de portafolios de cripto activos utilizando t\'ecnicas de aprendizaje por refuerzo, Masters in Applied Mathematics and Computer Science, 2024.
+  \item J.~Piza-Londo\~no, Aprendizaje por refuerzo de un parser sem\'antico \'optimo en DRT, Masters in Applied Mathematics and Computer Science, 2024.
+  \item J.~V. Tamayo-Ram\'irez, G.~A.~N. C\'arcamo, and R.~D. Rico-Gonz\'alez, Automatizaci\'on de procesos de cualificaci\'on en IQAP mediante chatbot de IA para ingreso a universidades internacionales, Masters in Applied Mathematics and Computer Science, 2024.
+  \item J.~A. Velasco, Hacia una cartograf\'ia del significado: Una exploraci\'on por los roles del sentido en el {Tractatus-Logico-Philosophicus}, Bachelors in Philosophy, 2019.
+  \item M.~P. G\'omez, La incompletitud de los fundamentos de las matem\'aticas, Bachelors in Philosophy, 2018.
+  \item M.~G. Algarra, Inconmensurabilidad e interpretaci\'on: Una propuesta de comparaci\'on entre teor\'ias cient\'ificas, Bachelors in Philosophy, 2007.
+\end{itemize}
+
+\cvsection{Courses Taught}
+\begin{itemize}
+  \item 2021--2024 (graduate): Reinforcement Learning; Artificial Intelligence: Problem Representation and Solving; Machine Learning Applications --- Universidad del Rosario.
+  \item 2017--2024 (undergraduate): Logic for Computer Science; Logic, Number Theory and Sets; Logic and Discrete Mathematics; Theory of Computation; Linear Algebra; Artificial Intelligence: Problem Representation and Solving; Numerical Analysis and Scientific Computing --- Universidad del Rosario.
+  \item 2007--2016 (undergraduate): Integral Calculus; Probability; Inferential Statistics; Philosophy of Language; Logic; Logical-Philosophical Models of Natural Language; Pragmatics; Formal Methods; Processes and Algorithms; Epidemiology; Scientific LaTeX --- Universidad del Rosario.
+  \item 2006: History of Mathematics; Theory of Computation --- Universidad Sergio Arboleda.
+  \item 2003: Mathematical Logic --- Universidad Sergio Arboleda.
+  \item 2002: Logic for Psychologists --- Universidad Nacional de Colombia.
+\end{itemize}
+
+\cvsection{Certifications}
+\begin{itemize}
+  \item Reinforcement Learning Specialization, Coursera
+  \item Generative AI: Prompt Engineering Basics, IBM
+  \item Introduction to Artificial Intelligence (AI), IBM
+  \item Introduction to Deep Learning \& Neural Networks with Keras, IBM
+  \item Generative AI Engineering, Coursera
+  \item Generative AI with Large Language Models, Coursera
+  \item Machine Learning Engineering for Production, Coursera
+  \item Deep Learning, Coursera
+  \item Reinforcement Learning for Trading, Cognitive Class
+  \item Machine Learning with Python (with Honors), IBM
+  \item Python for Data Science, AI \& Development, IBM
+\end{itemize}
+
+\cvsection{Skills}
+\textbf{Programming Languages:} Python, PyTorch, R, JavaScript, LaTeX\par
+\vspace{0.15em}
+\textbf{Spoken Languages:} English (C1, TOEFL), French (A2, DELF)\par
+
+\cvsection{Awards \& Honors}
+\begin{itemize}
+  \item 2022: Visiting Scholar Grant, Universidad del Rosario
+  \item 2020: Research Seedbed Grant, Universidad del Rosario
+  \item 2018: Visiting Scholar Grant, Universidad del Rosario
+  \item 2018: Seed Capital Grant, Universidad del Rosario
+  \item 2004: Huygens Scholarship for Outstanding Foreign Students, Netherlands Organization for International Cooperation in Higher Education
+\end{itemize}
 
 \end{document}
